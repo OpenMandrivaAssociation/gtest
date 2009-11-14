@@ -8,6 +8,7 @@ Summary:		Google's framework for writing C++ tests
 Version:		1.4.0
 Release:		%mkrel 1
 License:		BSD
+Group:			Development/C++
 URL:			http://code.google.com/p/googletest/
 Source0:		http://googletest.googlecode.com/files/%{name}-%{version}.tar.bz2
 BuildRequires:		python
@@ -37,7 +38,7 @@ This package contains the shared %{name} libraries.
 
 %package -n		%{develname}
 Summary:		Development files for %{name}
-Group:			Development/Other
+Group:			Development/C++
 Requires:		%{name} = %{version}-%{release}
 Provides:		%{name}-devel = %{version}-%{release}
 
@@ -46,7 +47,7 @@ This package contains development files for %{name}.
 
 %package -n		%{staticdevelname}
 Summary:		Static development files for %{name}
-Group:			Development/Other
+Group:			Development/C++
 Requires:		%{develname} = %{version}-%{release}
 Provides:		%{name}-static-devel = %{version}-%{release}
 
