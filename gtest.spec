@@ -10,6 +10,7 @@ Release:		%mkrel 1
 License:		BSD
 URL:			http://code.google.com/p/googletest/
 Source0:		http://googletest.googlecode.com/files/%{name}-%{version}.tar.bz2
+BuildRequires:		python
 BuildRoot:		%{_tmppath}/%{name}-buildroot
 
 %description
@@ -59,6 +60,9 @@ This package contains static development files for %{name}.
 autoreconf -f -i
 %configure
 %make
+
+%check
+%make check
 
 %install
 rm -rf %{buildroot}
