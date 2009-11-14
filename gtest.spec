@@ -6,7 +6,7 @@
 Name:			gtest
 Summary:		Google's framework for writing C++ tests
 Version:		1.4.0
-Release:		%mkrel 1
+Release:		%mkrel 2
 License:		BSD
 Group:			Development/C++
 URL:			http://code.google.com/p/googletest/
@@ -39,7 +39,7 @@ This package contains the shared %{name} libraries.
 %package -n		%{develname}
 Summary:		Development files for %{name}
 Group:			Development/C++
-Requires:		%{name} = %{version}-%{release}
+Requires:		%{libname} = %{version}-%{release}
 Provides:		%{name}-devel = %{version}-%{release}
 
 %description -n		%{develname}
