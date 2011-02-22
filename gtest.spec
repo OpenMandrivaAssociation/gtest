@@ -5,8 +5,8 @@
 
 Name:			gtest
 Summary:		Google's framework for writing C++ tests
-Version:		1.4.0
-Release:		%mkrel 3
+Version:		1.5.0
+Release:		%mkrel 1
 License:		BSD
 Group:			Development/C++
 URL:			http://code.google.com/p/googletest/
@@ -58,8 +58,16 @@ This package contains static development files for %{name}.
 %setup -q
 
 %build
+
+# pz: Since 1.5.0 we have an underlinking problem. There are 2 ways to fix it:
+#     - %define _disable_ld_no_undefined 1
+#     - export LDFLAGS="-lpthread"
+# Maybe we can also fix this by changing the autoconf macro that selects the
+# pthread flags...
+%define _disable_ld_no_undefined 1
+
 autoreconf -f -i
-%configure
+%configure2_5x
 %make
 
 %check
