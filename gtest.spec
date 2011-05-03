@@ -6,7 +6,7 @@
 Name:			gtest
 Summary:		Google's framework for writing C++ tests
 Version:		1.5.0
-Release:		%mkrel 1
+Release:		%mkrel 2
 License:		BSD
 Group:			Development/C++
 URL:			http://code.google.com/p/googletest/
