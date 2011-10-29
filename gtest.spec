@@ -5,14 +5,13 @@
 
 Name:			gtest
 Summary:		Google's framework for writing C++ tests
-Version:		1.5.0
-Release:		%mkrel 2
+Version:		1.6.0
+Release:		1
 License:		BSD
 Group:			Development/C++
 URL:			http://code.google.com/p/googletest/
-Source0:		http://googletest.googlecode.com/files/%{name}-%{version}.tar.bz2
+Source0:		http://googletest.googlecode.com/files/%{name}-%{version}.tar.zip
 BuildRequires:		python
-BuildRoot:		%{_tmppath}/%{name}-buildroot
 
 %description
 Google's framework for writing C++ tests on a variety of platforms 
@@ -45,15 +44,6 @@ Provides:		%{name}-devel = %{version}-%{release}
 %description -n		%{develname}
 This package contains development files for %{name}.
 
-%package -n		%{staticdevelname}
-Summary:		Static development files for %{name}
-Group:			Development/C++
-Requires:		%{develname} = %{version}-%{release}
-Provides:		%{name}-static-devel = %{version}-%{release}
-
-%description -n		%{staticdevelname}
-This package contains static development files for %{name}.
-
 %prep
 %setup -q
 
@@ -64,10 +54,10 @@ This package contains static development files for %{name}.
 #     - export LDFLAGS="-lpthread"
 # Maybe we can also fix this by changing the autoconf macro that selects the
 # pthread flags...
-%define _disable_ld_no_undefined 1
+#define _disable_ld_no_undefined 1
 
-autoreconf -f -i
-%configure2_5x
+#autoreconf -f -i
+%configure2_5x --disable-static
 %make
 
 %check
@@ -77,23 +67,19 @@ autoreconf -f -i
 rm -rf %{buildroot}
 %makeinstall
 
+find %{buildroot} -type f -name "*.la" -delete
+
 %clean
 rm -rf %{buildroot}
 
-%files -n		%{libname}
+%files -n %{libname}
 %defattr(-,root,root,-)
 %doc README CHANGES CONTRIBUTORS COPYING
-%{_libdir}/lib%{name}*.so.*
+%{_libdir}/lib%{name}*.so.%{major}*
 
-%files -n		%{develname}
+%files -n %{develname}
 %defattr(-,root,root,-)
 %{_bindir}/%{name}-config
 %{_libdir}/lib%{name}*.so
-%{_libdir}/lib%{name}*.la
 %{_includedir}/%{name}
 %{_datadir}/aclocal/%{name}.m4
-
-%files -n		%{staticdevelname}
-%defattr(-,root,root,-)
-%{_libdir}/lib%{name}*.a
-
