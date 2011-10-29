@@ -10,7 +10,7 @@ Release:		1
 License:		BSD
 Group:			Development/C++
 URL:			http://code.google.com/p/googletest/
-Source0:		http://googletest.googlecode.com/files/%{name}-%{version}.tar.zip
+Source0:		http://googletest.googlecode.com/files/%{name}-%{version}.zip
 BuildRequires:		python
 
 %description
