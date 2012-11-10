@@ -1,0 +1,25 @@
+--- gtest-1.6.0/Makefile.am~	2011-04-15 13:49:12.000000000 -0600
++++ gtest-1.6.0/Makefile.am	2011-10-31 20:49:05.988363166 -0600
+@@ -295,8 +295,6 @@
+ 
+ install-exec-local:
+ 	echo "'make install' is dangerous and not supported. Instead, see README for how to integrate Google Test into your build system."
+-	false
+ 
+ install-data-local:
+ 	echo "'make install' is dangerous and not supported. Instead, see README for how to integrate Google Test into your build system."
+-	false
+--- gtest-1.6.0/Makefile.in~	2011-04-15 13:51:48.000000000 -0600
++++ gtest-1.6.0/Makefile.in	2011-10-31 20:49:15.332190402 -0600
+@@ -1318,11 +1318,9 @@
+ 
+ install-exec-local:
+ 	echo "'make install' is dangerous and not supported. Instead, see README for how to integrate Google Test into your build system."
+-	false
+ 
+ install-data-local:
+ 	echo "'make install' is dangerous and not supported. Instead, see README for how to integrate Google Test into your build system."
+-	false
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
