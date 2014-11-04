@@ -4,8 +4,8 @@
 
 Summary:	Google's framework for writing C++ tests
 Name:		gtest
-Version:	1.6.0
-Release:	7
+Version:	1.7.0
+Release:	1
 License:	BSD
 Group:		Development/C++
 Url:		http://code.google.com/p/googletest/
@@ -47,9 +47,10 @@ This package contains development files for %{name}.
 %setup -q
 %apply_patches
 
+find . -name "*.py" -exec sed -i 's|/usr/bin/env python|%__python2|' {} \;
+
 %build
-%configure2_5x \
-	--disable-static
+%configure
 %make LIBS='-lpthread'
 
 %install
@@ -62,7 +63,7 @@ This package contains development files for %{name}.
 %{_libdir}/lib%{name}*.so.%{major}*
 
 %files -n %{devname}
-%doc README COPYING
+%doc README
 %{_libdir}/lib%{name}*.so
 %{_includedir}/%{name}
 %{_datadir}/aclocal/%{name}.m4
