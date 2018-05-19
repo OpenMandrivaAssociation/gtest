@@ -1,4 +1,2 @@
-removed_sources:
-  gtest-1.6.0.zip: 00d6be170eb9fc3b2198ffdcb1f1d6ba7fc6e621
 sources:
-  gtest-1.7.0.zip: f85f6d2481e2c6c4a18539e391aa4ea8ab0394af
+  release-1.8.0.tar.gz: e7e646a6204638fe8e87e165292b8dd9cd4c36ed
