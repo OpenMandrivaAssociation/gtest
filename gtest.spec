@@ -9,12 +9,12 @@
 
 Summary:	Google's framework for writing C++ tests
 Name:		gtest
-Version:	1.8.0
-Release:	2
+Version:	1.8.1
+Release:	1
 License:	BSD
 Group:		Development/C++
-Url:		https://github.com/google/googletest
-Source0:	https://github.com/google/googletest/archive/release-%{version}.tar.gz
+Url:		https://github.com/abseil/googletest
+Source0:	https://github.com/abseil/googletest/archive/release-%{version}.tar.gz
 Patch0:		googletest-1.8.0-sonames.patch
 BuildRequires:	cmake ninja
 %rename gmock
@@ -99,9 +99,9 @@ find . -name "*.py" -exec sed -i 's|/usr/bin/env python|%__python2|' {} \;
 %install
 %ninja_install -C build
 
-mkdir -p %{buildroot}%{_prefix}/src/%{name}
+mkdir -p %{buildroot}%{_prefix}/src/googletest
 rm -rf build
-cp -a * %{buildroot}%{_prefix}/src/%{name}/
+cp -a * %{buildroot}%{_prefix}/src/googletest/
 
 %files -n %{libname}
 %{_libdir}/lib%{name}*.so.%{major}*
@@ -114,6 +114,8 @@ cp -a * %{buildroot}%{_prefix}/src/%{name}/
 %{_libdir}/libgmock*.so
 %{_includedir}/%{name}
 %{_includedir}/gmock
+%{_libdir}/cmake/GTest
+%{_libdir}/pkgconfig/*.pc
 
 %files source
-%{_prefix}/src/%{name}
+%{_prefix}/src/googletest

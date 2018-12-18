@@ -1,44 +1,24 @@
-diff -up googletest-release-1.8.0/CMakeLists.txt.omv~ googletest-release-1.8.0/CMakeLists.txt
-diff -up googletest-release-1.8.0/googlemock/CMakeLists.txt.omv~ googletest-release-1.8.0/googlemock/CMakeLists.txt
---- googletest-release-1.8.0/googlemock/CMakeLists.txt.omv~	2018-05-19 10:09:25.188196768 +0200
-+++ googletest-release-1.8.0/googlemock/CMakeLists.txt	2018-05-19 10:14:48.218693155 +0200
-@@ -92,6 +92,9 @@ cxx_library(gmock_main
-             src/gmock-all.cc
-             src/gmock_main.cc)
- 
+diff -up googletest-release-1.8.1/googlemock/CMakeLists.txt.1~ googletest-release-1.8.1/googlemock/CMakeLists.txt
+--- googletest-release-1.8.1/googlemock/CMakeLists.txt.1~	2018-12-11 15:34:21.539613211 +0100
++++ googletest-release-1.8.1/googlemock/CMakeLists.txt	2018-12-11 15:35:06.332005653 +0100
+@@ -112,6 +112,8 @@ else()
+   cxx_library(gmock_main "${cxx_strict}" src/gmock_main.cc)
+   target_link_libraries(gmock_main PUBLIC gmock)
+ endif()
 +set_target_properties(gmock PROPERTIES VERSION 0.0 SOVERSION 0)
 +set_target_properties(gmock_main PROPERTIES VERSION 0.0 SOVERSION 0)
-+
  # If the CMake version supports it, attach header directory information
  # to the targets for when we are part of a parent build (ie being pulled
  # in via add_subdirectory() rather than being a standalone build).
-@@ -104,7 +107,7 @@ endif()
- #
- # Install rules
- install(TARGETS gmock gmock_main
--  DESTINATION lib)
-+  DESTINATION ${LIB_INSTALL_DIR})
- install(DIRECTORY ${gmock_SOURCE_DIR}/include/gmock
-   DESTINATION include)
- 
-diff -up googletest-release-1.8.0/googletest/CMakeLists.txt.omv~ googletest-release-1.8.0/googletest/CMakeLists.txt
---- googletest-release-1.8.0/googletest/CMakeLists.txt.omv~	2018-05-19 10:11:53.106762617 +0200
-+++ googletest-release-1.8.0/googletest/CMakeLists.txt	2018-05-19 10:15:19.873957148 +0200
-@@ -89,6 +89,8 @@ endif()
+diff -up googletest-release-1.8.1/googletest/CMakeLists.txt.1~ googletest-release-1.8.1/googletest/CMakeLists.txt
+--- googletest-release-1.8.1/googletest/CMakeLists.txt.1~	2018-12-11 15:34:21.540613220 +0100
++++ googletest-release-1.8.1/googletest/CMakeLists.txt	2018-12-11 15:35:58.667478462 +0100
+@@ -132,6 +132,8 @@ endif()
  # aggressive about warnings.
  cxx_library(gtest "${cxx_strict}" src/gtest-all.cc)
  cxx_library(gtest_main "${cxx_strict}" src/gtest_main.cc)
 +set_target_properties(gtest PROPERTIES VERSION 0.0 SOVERSION 0)
 +set_target_properties(gtest_main PROPERTIES VERSION 0.0 SOVERSION 0)
- target_link_libraries(gtest_main gtest)
- 
  # If the CMake version supports it, attach header directory information
-@@ -103,7 +105,7 @@ endif()
- #
- # Install rules
- install(TARGETS gtest gtest_main
--  DESTINATION lib)
-+  DESTINATION ${LIB_INSTALL_DIR})
- install(DIRECTORY ${gtest_SOURCE_DIR}/include/gtest
-   DESTINATION include)
- 
+ # to the targets for when we are part of a parent build (ie being pulled
+ # in via add_subdirectory() rather than being a standalone build).
