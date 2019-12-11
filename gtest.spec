@@ -10,7 +10,7 @@
 Summary:	Google's framework for writing C++ tests
 Name:		gtest
 Version:	1.8.1
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/C++
 Url:		https://github.com/abseil/googletest
