@@ -1,15 +1,15 @@
 # ****ing python 2.x
 %global _python_bytecompile_build 0
 
-%define major	0
-%define libname	%mklibname %{name} %{major}
-%define mocklibname	%mklibname gmock %{major}
+%define major	1
+%define libname	%mklibname %{name}
+%define mocklibname	%mklibname gmock
 %define devname	%mklibname %{name} -d
 %define mockdevname	%mklibname gmock -d
 
 Summary:	Google's framework for writing C++ tests
 Name:		gtest
-Version:	1.10.0
+Version:	1.12.1
 Release:	1
 License:	BSD
 Group:		Development/C++
