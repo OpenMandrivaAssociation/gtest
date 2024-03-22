@@ -1,7 +1,7 @@
-diff -up googletest-release-1.12.1/googlemock/CMakeLists.txt.1~ googletest-release-1.12.1/googlemock/CMakeLists.txt
---- googletest-release-1.12.1/googlemock/CMakeLists.txt.1~	2022-09-08 14:20:44.027400883 +0200
-+++ googletest-release-1.12.1/googlemock/CMakeLists.txt	2022-09-08 14:21:36.119603757 +0200
-@@ -96,10 +96,10 @@ if (MSVC)
+diff -up googletest-1.14.0/googlemock/CMakeLists.txt.1~ googletest-1.14.0/googlemock/CMakeLists.txt
+--- googletest-1.14.0/googlemock/CMakeLists.txt.1~	2024-03-22 21:30:46.403235536 +0100
++++ googletest-1.14.0/googlemock/CMakeLists.txt	2024-03-22 21:31:27.563740310 +0100
+@@ -95,10 +95,10 @@ if (MSVC)
  else()
    cxx_library(gmock "${cxx_strict}" src/gmock-all.cc)
    target_link_libraries(gmock PUBLIC gtest)
@@ -12,20 +12,26 @@ diff -up googletest-release-1.12.1/googlemock/CMakeLists.txt.1~ googletest-relea
 -  set_target_properties(gmock_main PROPERTIES VERSION ${GOOGLETEST_VERSION})
 +  set_target_properties(gmock_main PROPERTIES VERSION ${GOOGLETEST_VERSION} SOVERSION 1)
  endif()
- # If the CMake version supports it, attach header directory information
- # to the targets for when we are part of a parent build (ie being pulled
-diff -up googletest-release-1.12.1/googletest/CMakeLists.txt.1~ googletest-release-1.12.1/googletest/CMakeLists.txt
---- googletest-release-1.12.1/googletest/CMakeLists.txt.1~	2022-09-08 14:20:44.027400883 +0200
-+++ googletest-release-1.12.1/googletest/CMakeLists.txt	2022-09-08 14:22:08.061114521 +0200
-@@ -124,9 +124,9 @@ include_directories(${gtest_build_includ
+ 
+ string(REPLACE ";" "$<SEMICOLON>" dirs "${gmock_build_include_dirs}")
+diff -up googletest-1.14.0/googletest/CMakeLists.txt.1~ googletest-1.14.0/googletest/CMakeLists.txt
+--- googletest-1.14.0/googletest/CMakeLists.txt.1~	2024-03-22 21:30:46.403235536 +0100
++++ googletest-1.14.0/googletest/CMakeLists.txt	2024-03-22 21:31:56.260088557 +0100
+@@ -121,7 +121,7 @@ include_directories(${gtest_build_includ
  # are used for other targets, to ensure that gtest can be compiled by a user
  # aggressive about warnings.
  cxx_library(gtest "${cxx_strict}" src/gtest-all.cc)
 -set_target_properties(gtest PROPERTIES VERSION ${GOOGLETEST_VERSION})
 +set_target_properties(gtest PROPERTIES VERSION ${GOOGLETEST_VERSION} SOVERSION 1)
+ if(GTEST_HAS_ABSL)
+   target_compile_definitions(gtest PUBLIC GTEST_HAS_ABSL=1)
+   target_link_libraries(gtest PUBLIC
+@@ -139,7 +139,7 @@ if(GTEST_HAS_ABSL)
+   )
+ endif()
  cxx_library(gtest_main "${cxx_strict}" src/gtest_main.cc)
 -set_target_properties(gtest_main PROPERTIES VERSION ${GOOGLETEST_VERSION})
 +set_target_properties(gtest_main PROPERTIES VERSION ${GOOGLETEST_VERSION} SOVERSION 1)
- # If the CMake version supports it, attach header directory information
- # to the targets for when we are part of a parent build (ie being pulled
- # in via add_subdirectory() rather than being a standalone build).
+ string(REPLACE ";" "$<SEMICOLON>" dirs "${gtest_build_include_dirs}")
+ target_include_directories(gtest SYSTEM INTERFACE
+   "$<BUILD_INTERFACE:${dirs}>"
