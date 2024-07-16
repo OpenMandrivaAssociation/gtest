@@ -9,14 +9,18 @@
 
 Summary:	Google's framework for writing C++ tests
 Name:		gtest
-Version:	1.14.0
+Version:	1.15.0
 Release:	1
 License:	BSD
 Group:		Development/C++
 Url:		https://github.com/google/googletest
 Source0:	https://github.com/google/googletest/archive/refs/tags/v%{version}.tar.gz
 Patch0:		googletest-1.8.0-sonames.patch
-BuildRequires:	cmake ninja
+BuildSystem:	cmake
+BuildOption:	-DBUILD_GMOCK:BOOL=ON
+BuildOption:	-DBUILD_GTEST:BOOL=ON
+BuildOption:	-DBUILD_SHARED_LIBS:BOOL=ON
+BuildOption:	-Dgtest_force_shared_crt:BOOL=ON
 %rename gmock
 
 %description
@@ -81,26 +85,9 @@ Source code for the %{name} test suite.
 Many projects using %{name} require copying the source code into
 the project tree rather than using a system wide copy.
 
-%prep
-%autosetup -n googletest-%{version} -p1
-
-find . -name "*.py" -exec sed -i 's|/usr/bin/env python|%__python2|' {} \;
-
-%cmake \
-	-DBUILD_GMOCK:BOOL=ON \
-	-DBUILD_GTEST:BOOL=ON \
-	-DBUILD_SHARED_LIBS:BOOL=ON \
-	-Dgtest_force_shared_crt:BOOL=ON \
-	-G Ninja
-
-%build
-%ninja -C build
-
-%install
-%ninja_install -C build
-
+%install -a
 mkdir -p %{buildroot}%{_prefix}/src/googletest
-rm -rf build
+rm -rf _OMV_rpm_build
 cp -a * %{buildroot}%{_prefix}/src/googletest/
 
 %files -n %{libname}
