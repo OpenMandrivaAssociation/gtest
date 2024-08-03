@@ -9,7 +9,7 @@
 
 Summary:	Google's framework for writing C++ tests
 Name:		gtest
-Version:	1.15.0
+Version:	1.15.2
 Release:	1
 License:	BSD
 Group:		Development/C++
