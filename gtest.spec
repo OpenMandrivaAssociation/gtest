@@ -9,12 +9,12 @@
 
 Summary:	Google's framework for writing C++ tests
 Name:		gtest
-Version:	1.15.2
+Version:	1.16.0
 Release:	1
 License:	BSD
 Group:		Development/C++
 Url:		https://github.com/google/googletest
-Source0:	https://github.com/google/googletest/archive/refs/tags/v%{version}.tar.gz
+Source0:    https://github.com/google/googletest/releases/download/v%{version}/googletest-%{version}.tar.gz
 Patch0:		googletest-1.8.0-sonames.patch
 BuildSystem:	cmake
 BuildOption:	-DBUILD_GMOCK:BOOL=ON
